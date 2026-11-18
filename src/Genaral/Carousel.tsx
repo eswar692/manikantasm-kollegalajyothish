@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect  } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { person_name } from "./secrete";
@@ -9,7 +9,7 @@ export default function Carousel() {
     []
   );
 
-  const [_autoplay, setAutoplay] = useState<NodeJS.Timer | null>(null);
+
 
   const slides = [
     {
@@ -47,7 +47,6 @@ export default function Carousel() {
     };
 
     const interval = setInterval(play, 3000); // 3s smooth
-    setAutoplay(interval);
 
     return () => {
       clearInterval(interval);

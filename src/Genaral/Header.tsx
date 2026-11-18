@@ -1,28 +1,27 @@
-import { MenuIcon, X } from "lucide-react";
+import { MenuIcon, X, Sparkles, Phone } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { address, company_name, phone_number } from "./secrete";
+import {  company_name, phone_number } from "./secrete";
 
 const Header = () => {
   return (
     <header
-      className="w-full "
+      className="w-full sticky top-0 z-50 backdrop-blur-md"
       style={{
-        background:
-          "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%)",
-        borderBottom: "1px solid rgba(212,175,55,0.2)",
-        boxShadow: "0 4px 40px rgba(212,175,55,0.08)",
+        background: "rgba(255, 255, 255, 0.92)",
+        borderBottom: "1px solid rgba(212, 175, 55, 0.25)",
+        boxShadow: "0 4px 25px rgba(0, 0, 0, 0.04)",
       }}
     >
       {/* Top accent line */}
       <div
         style={{
-          height: "2px",
+          height: "3px",
           background:
-            "linear-gradient(90deg, transparent, #d4af37, #f5e27a, #d4af37, transparent)",
+            "linear-gradient(90deg, #d4af37, #f5e27a, #8b6914, #d4af37)",
         }}
       />
-      <div className="w-full md:w-[92%] mx-auto px-4 py-3 md:py-4">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-3 md:py-3.5">
         <Logo />
       </div>
     </header>
@@ -37,19 +36,14 @@ const Logo = () => {
   return (
     <div className="flex items-center justify-between w-full">
       {/* Left: Logo + Info */}
-      <div className="flex items-center gap-5 md:gap-7">
-        {/* Logo with ornate border */}
+      <div className="flex items-center gap-4 md:gap-5">
+        {/* Logo with ornate gold border */}
         <div
           onMouseEnter={() => setImgHovered(true)}
           onMouseLeave={() => setImgHovered(false)}
-          style={{
-            position: "relative",
-            width: "68px",
-            height: "68px",
-            flexShrink: 0,
-          }}
+          className="relative cursor-pointer flex-shrink-0"
+          style={{ width: "60px", height: "60px" }}
         >
-          {/* Rotating ring */}
           <div
             style={{
               position: "absolute",
@@ -57,8 +51,8 @@ const Logo = () => {
               borderRadius: "50%",
               background:
                 "conic-gradient(from 0deg, #d4af37, #f5e27a, #d4af37, #8b6914, #d4af37)",
-              animation: "spin 8s linear infinite",
-              opacity: imgHovered ? 1 : 0.6,
+              animation: "spin 12s linear infinite",
+              opacity: imgHovered ? 1 : 0.7,
               transition: "opacity 0.3s ease",
             }}
           />
@@ -67,7 +61,7 @@ const Logo = () => {
               position: "absolute",
               inset: "2px",
               borderRadius: "50%",
-              background: "#0a0a0a",
+              background: "#ffffff",
             }}
           />
           <div
@@ -79,107 +73,65 @@ const Logo = () => {
             }}
           >
             <img
-              src="https://i.pinimg.com/1200x/19/6b/2d/196b2d46fb8864dfb588c18655d4a3f1.jpg"
+              src="https://i.pinimg.com/736x/d1/c3/11/d1c31121738ef3dcd0ac6a73550d35ca.jpg"
               alt={`${company_name} Logo`}
               style={{
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                transform: imgHovered ? "scale(1.12)" : "scale(1)",
-                transition: "transform 0.5s ease",
+                transform: imgHovered ? "scale(1.1)" : "scale(1)",
+                transition: "transform 0.4s ease",
               }}
             />
           </div>
         </div>
 
         {/* Text block */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-          {/* Company name */}
-          <h1
-            style={{
-              fontFamily: "'Playfair Display', 'Georgia', serif",
-              fontWeight: 800,
-              fontSize: "clamp(1.4rem, 3vw, 2rem)",
-              color: "#fff",
-              letterSpacing: "0.04em",
-              lineHeight: 1.1,
-              textShadow: "0 0 30px rgba(212,175,55,0.3)",
-            }}
-          >
-            {company_name}
-          </h1>
+        <div className="flex flex-col">
+          <Link to="/" className="inline-block text-decoration-none">
+            <h1
+              style={{
+                fontFamily: "'Playfair Display', 'Georgia', serif",
+                fontWeight: 700,
+                fontSize: "clamp(1.25rem, 2.2vw, 1.7rem)",
+                color: "#1a1a1a",
+                letterSpacing: "0.02em",
+                lineHeight: 1.15,
+              }}
+            >
+              {company_name}
+            </h1>
+          </Link>
 
           {/* Est. badge */}
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <div
-              style={{
-                height: "1px",
-                width: "24px",
-                background: "linear-gradient(90deg, transparent, #d4af37)",
-              }}
-            />
+          <div className="flex items-center gap-1.5 mt-0.5">
             <span
+              className="flex items-center gap-1 text-[#8b6914]"
               style={{
-                fontFamily: "'Cormorant Garamond', 'Georgia', serif",
-                fontSize: "0.7rem",
-                color: "#d4af37",
-                letterSpacing: "0.18em",
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "0.72rem",
+                letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 fontStyle: "italic",
+                fontWeight: 600,
               }}
             >
+              <Sparkles size={10} className="text-[#d4af37]" />
               Est. 1950
             </span>
-            <div
-              style={{
-                height: "1px",
-                width: "24px",
-                background: "linear-gradient(90deg, #d4af37, transparent)",
-              }}
-            />
           </div>
 
-          {/* Address — hidden on very small screens */}
-          <p
-            style={{
-              fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
-              fontSize: "clamp(0.65rem, 1.2vw, 0.78rem)",
-              color: "rgba(220,220,220,0.75)",
-              marginTop: "4px",
-              lineHeight: 1.6,
-              maxWidth: "360px",
-            }}
-            className="hidden sm:block"
-          >
-            <span style={{ color: "rgba(255,255,255,0.9)", fontWeight: 500 }}>
-              {address.line1}
-            </span>
-            {", "}
-            {address.line2}
-            <br />
-            {address.District}, {address.state} – {address.pincode},{" "}
-            {address.country}
-            <br />
-            <span
-              style={{
-                color: "#d4af37",
-                fontWeight: 600,
-                letterSpacing: "0.03em",
-              }}
-            >
-              📞 +91 {phone_number}
-            </span>
-          </p>
+        
         </div>
       </div>
 
-      {/* Right: Menu */}
+      {/* Right: Navigation Menu */}
       <Menu />
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Cormorant+Garamond:ital,wght@1,400&family=DM+Sans:wght@400;500&family=Outfit:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:ital,wght@1,600&family=DM+Sans:wght@400;500&family=Outfit:wght@400;500;600&display=swap');
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
       `}</style>
     </div>
   );
@@ -191,8 +143,8 @@ const Menu = () => {
   return (
     <div>
       {/* Desktop nav */}
-      <ul className="hidden lg:flex items-center gap-1">
-        {["Home", "About", "Services", "Contact"].map((item, i) => (
+      <ul className="hidden lg:flex items-center gap-1.5">
+        {["Home", "About", "Services", "Testimonials", "Contact"].map((item, i) => (
           <NavLink
             key={item}
             to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
@@ -203,33 +155,38 @@ const Menu = () => {
         ))}
 
         {/* CTA Button */}
-        <li style={{ marginLeft: "16px" }}>
+        <li className="ml-3">
           <Link
             to="/contact"
             style={{
               fontFamily: "'Outfit', sans-serif",
               fontSize: "0.82rem",
               fontWeight: 600,
-              letterSpacing: "0.08em",
+              letterSpacing: "0.06em",
               textTransform: "uppercase",
-              color: "#0a0a0a",
-              background: "linear-gradient(135deg, #d4af37, #f5e27a)",
-              padding: "9px 22px",
-              borderRadius: "4px",
+              color: "#ffffff",
+              background: "linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%)",
+              padding: "10px 22px",
+              borderRadius: "50px",
               textDecoration: "none",
-              boxShadow: "0 2px 16px rgba(212,175,55,0.35)",
+              boxShadow: "0 4px 15px rgba(0,0,0,0.15)",
               transition: "all 0.25s ease",
               display: "inline-block",
+              border: "1px solid rgba(212,175,55,0.4)",
             }}
             onMouseEnter={(e) => {
-              (e.target as HTMLElement).style.boxShadow =
-                "0 4px 24px rgba(212,175,55,0.55)";
-              (e.target as HTMLElement).style.transform = "translateY(-1px)";
+              const el = e.currentTarget as HTMLElement;
+              el.style.background = "linear-gradient(135deg, #d4af37 0%, #b89728 100%)";
+              el.style.color = "#ffffff";
+              el.style.transform = "translateY(-1px)";
+              el.style.boxShadow = "0 6px 20px rgba(212,175,55,0.3)";
             }}
             onMouseLeave={(e) => {
-              (e.target as HTMLElement).style.boxShadow =
-                "0 2px 16px rgba(212,175,55,0.35)";
-              (e.target as HTMLElement).style.transform = "translateY(0)";
+              const el = e.currentTarget as HTMLElement;
+              el.style.background = "linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%)";
+              el.style.color = "#ffffff";
+              el.style.transform = "translateY(0)";
+              el.style.boxShadow = "0 4px 15px rgba(0,0,0,0.15)";
             }}
           >
             Get in Touch
@@ -239,23 +196,11 @@ const Menu = () => {
 
       {/* Mobile menu toggle */}
       <button
-        className="lg:hidden"
+        className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-[#d4af37]/40 bg-[#d4af37]/10 cursor-pointer active:scale-95 transition-all"
         onClick={() => setOpen(!open)}
         aria-label="Toggle menu"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "42px",
-          height: "42px",
-          borderRadius: "8px",
-          border: "1px solid rgba(212,175,55,0.4)",
-          background: "rgba(212,175,55,0.08)",
-          cursor: "pointer",
-          transition: "all 0.2s ease",
-        }}
       >
-        <MenuIcon size={20} color="#d4af37" strokeWidth={2} />
+        <MenuIcon size={20} color="#8b6914" strokeWidth={2} />
       </button>
 
       {open && <MobileMenu setOpen={setOpen} />}
@@ -274,39 +219,40 @@ const NavLink = ({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <li style={{ listStyle: "none" }}>
+    <li className="list-none">
       <Link
         to={to}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{
           fontFamily: "'Outfit', sans-serif",
-          fontSize: "0.88rem",
+          fontSize: "0.85rem",
           fontWeight: 500,
-          letterSpacing: "0.06em",
+          letterSpacing: "0.04em",
           textTransform: "uppercase",
-          color: hovered ? "#d4af37" : "rgba(255,255,255,0.8)",
+          color: hovered ? "#b89728" : "#4a4a4a",
           textDecoration: "none",
           padding: "8px 14px",
-          borderRadius: "4px",
+          borderRadius: "6px",
           position: "relative",
-          transition: "color 0.25s ease",
+          transition: "color 0.2s ease",
           display: "block",
         }}
       >
         {children}
-        {/* Underline */}
+        {/* Underline pill indicator */}
         <span
           style={{
             position: "absolute",
             bottom: "4px",
             left: "14px",
             right: "14px",
-            height: "1px",
-            background: "linear-gradient(90deg, #d4af37, #f5e27a)",
+            height: "2px",
+            background: "#d4af37",
             transform: hovered ? "scaleX(1)" : "scaleX(0)",
             transformOrigin: "left",
-            transition: "transform 0.3s ease",
+            transition: "transform 0.25s ease",
+            borderRadius: "2px",
           }}
         />
       </Link>
@@ -321,32 +267,23 @@ const MobileMenu = ({ setOpen }: { setOpen: (open: boolean) => void }) => {
         position: "fixed",
         inset: 0,
         zIndex: 999999,
-        background:
-          "linear-gradient(160deg, #0a0a0a 0%, #1a1a2e 60%, #0f0f0f 100%)",
+        background: "rgba(255, 255, 255, 0.98)",
+        backdropFilter: "blur(10px)",
         display: "flex",
         flexDirection: "column",
-        padding: "28px 24px",
-        animation: "slideDown 0.3s ease",
+        padding: "24px",
+        animation: "fadeIn 0.25s ease",
+        overflowY: "auto",
       }}
     >
-      {/* Top bar */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          borderBottom: "1px solid rgba(212,175,55,0.2)",
-          paddingBottom: "20px",
-          marginBottom: "8px",
-        }}
-      >
+      {/* Top bar inside mobile menu */}
+      <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-6">
         <span
           style={{
             fontFamily: "'Playfair Display', serif",
             fontSize: "1.3rem",
             fontWeight: 700,
-            color: "#d4af37",
-            letterSpacing: "0.05em",
+            color: "#1a1a1a",
           }}
         >
           {company_name}
@@ -354,36 +291,17 @@ const MobileMenu = ({ setOpen }: { setOpen: (open: boolean) => void }) => {
         <button
           onClick={() => setOpen(false)}
           aria-label="Close menu"
-          style={{
-            width: "40px",
-            height: "40px",
-            borderRadius: "50%",
-            border: "1px solid rgba(212,175,55,0.3)",
-            background: "rgba(212,175,55,0.08)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-          }}
+          className="w-9 h-9 rounded-full border border-gray-300 bg-gray-50 flex items-center justify-center cursor-pointer active:scale-95"
         >
-          <X size={18} color="#d4af37" />
+          <X size={18} color="#333" />
         </button>
       </div>
 
       {/* Links */}
-      <ul
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "4px",
-          marginTop: "16px",
-          padding: 0,
-          listStyle: "none",
-        }}
-      >
+      <ul className="flex flex-col gap-2.5 p-0 list-none">
         {["Home", "About", "Services", "Testimonials", "Contact"].map(
           (item, i) => (
-            <li key={item} style={{ animationDelay: `${i * 0.06}s` }}>
+            <li key={item} style={{ animationDelay: `${i * 0.05}s` }}>
               <Link
                 to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                 onClick={() => setOpen(false)}
@@ -391,70 +309,43 @@ const MobileMenu = ({ setOpen }: { setOpen: (open: boolean) => void }) => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  padding: "16px 20px",
+                  padding: "14px 18px",
                   borderRadius: "8px",
-                  border: "1px solid rgba(212,175,55,0.08)",
-                  background: "rgba(255,255,255,0.03)",
-                  color: "rgba(255,255,255,0.88)",
+                  border: "1px solid rgba(212,175,55,0.2)",
+                  background: "rgba(252, 250, 245, 0.8)",
+                  color: "#1a1a1a",
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: "1rem",
                   fontWeight: 500,
-                  letterSpacing: "0.05em",
                   textDecoration: "none",
                   transition: "all 0.2s ease",
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
-                  el.style.background = "rgba(212,175,55,0.1)";
-                  el.style.color = "#d4af37";
-                  el.style.borderColor = "rgba(212,175,55,0.3)";
+                  el.style.background = "#d4af37";
+                  el.style.color = "#ffffff";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
-                  el.style.background = "rgba(255,255,255,0.03)";
-                  el.style.color = "rgba(255,255,255,0.88)";
-                  el.style.borderColor = "rgba(212,175,55,0.08)";
+                  el.style.background = "rgba(252, 250, 245, 0.8)";
+                  el.style.color = "#1a1a1a";
                 }}
               >
-                {item}
-                <span
-                  style={{ color: "#d4af37", fontSize: "1.1rem", opacity: 0.6 }}
-                >
-                  ›
-                </span>
+                <span>{item}</span>
+                <span style={{ fontSize: "1.1rem", opacity: 0.6 }}>›</span>
               </Link>
             </li>
           ),
         )}
       </ul>
 
-      {/* Bottom address */}
-      <div
-        style={{
-          marginTop: "auto",
-          padding: "20px",
-          borderRadius: "8px",
-          border: "1px solid rgba(212,175,55,0.15)",
-          background: "rgba(212,175,55,0.04)",
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "0.78rem",
-            color: "rgba(220,220,220,0.6)",
-            lineHeight: 1.7,
-            margin: 0,
-          }}
-        >
-          {address.line1}, {address.line2}
-          <br />
-          {address.District}, {address.state} – {address.pincode}
-          <br />
-          <span style={{ color: "#d4af37", fontWeight: 600 }}>
-            📞 +91 {phone_number}
-          </span>
-        </p>
+      {/* Mobile Footer Info */}
+      <div className="mt-auto pt-6 border-t border-gray-200 flex flex-col gap-2.5 text-xs text-gray-600">
+      
+        <div className="flex items-center gap-2 text-[#8b6914] font-semibold">
+          <Phone size={14} />
+          <span>+91 {phone_number}</span>
+        </div>
       </div>
     </div>
   );
