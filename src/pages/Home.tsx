@@ -16,12 +16,14 @@ import {
   whatsapp_number,
 } from "../Genaral/secrete";
 import ImageView from "../Genaral/VideoView";
+import GoogleMapSection from "../Genaral/GoogleMap";
 
 const Home = () => {
   return (
     <div className="flex flex-col w-full h-full bg-slate-950">
       <ImageView />
       <Problems />
+      <GoogleMapSection/>
       <AboutAstrologer />
       <AstrologyServices />
       <AstrologyServicesModern />

@@ -1,8 +1,8 @@
 const phone_number = "9663079212";
 const email = "";
 const whatsapp_number = "9663079212";
-const company_name = "Kollegala Jyothish";
-const person_name = "Kollegala Jyothish";
+const company_name = "Kollegala Jyothishya";
+const person_name = "Kollegala Jyothishya";
 
 const website_url = "https://kollegalajyothish.in/";
 
